@@ -30,15 +30,27 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var bnb = BottomNavigationBar(
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.black,
         onTap: (i) {
           setState(() {
             id = i;
           });
         },
         items: [
-          BottomNavigationBarItem(title: Text("Chats"), icon: Icon(Icons.chat)),
           BottomNavigationBarItem(
-              title: Text("People"), icon: Icon(Icons.verified_user))
+              title: Text(
+                "Chats",
+                style: TextStyle(color: Colors.grey),
+              ),
+              icon: Icon(Icons.chat)),
+          BottomNavigationBarItem(
+              title: Text(
+                "People",
+                style: TextStyle(color: Colors.grey),
+              ),
+              icon: Icon(Icons.verified_user))
         ]);
 
     var tab = <Widget>[
@@ -97,12 +109,19 @@ class _HomePageState extends State<HomePage> {
                   }))
         ],
       ),
-      Center(
-        child: Text(
-          "Hii",
-          style: TextStyle(color: Colors.white),
-        ),
-      )
+      ListView.builder(
+          itemCount: 200,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              leading: CircleAvatar(
+                child: FlutterLogo(),
+              ),
+              title: Text(
+                "User $index",
+                style: TextStyle(color: Colors.white),
+              ),
+            );
+          })
     ];
     return SafeArea(
       child: Scaffold(
