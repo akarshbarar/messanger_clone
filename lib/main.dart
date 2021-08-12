@@ -109,19 +109,42 @@ class _HomePageState extends State<HomePage> {
                   }))
         ],
       ),
-      ListView.builder(
-          itemCount: 200,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: CircleAvatar(
-                child: FlutterLogo(),
-              ),
-              title: Text(
-                "User $index",
-                style: TextStyle(color: Colors.white),
-              ),
-            );
-          })
+      DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            backgroundColor: Colors.black,
+            appBar: AppBar(
+              backgroundColor: Colors.black,
+              bottom: TabBar(tabs: [
+                Tab(
+                  text: "Active(34)",
+                ),
+                Tab(
+                  text: "Stories(11)",
+                )
+              ]),
+            ),
+            body: TabBarView(
+              children: [
+                ListView.builder(
+                    itemCount: 200,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        leading: CircleAvatar(
+                          child: FlutterLogo(),
+                        ),
+                        title: Text(
+                          "User $index",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      );
+                    }),
+                Center(
+                  child: Text("Stories"),
+                )
+              ],
+            ),
+          ))
     ];
     return SafeArea(
       child: Scaffold(
