@@ -139,9 +139,21 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     }),
-                Center(
-                  child: Text("Stories"),
-                )
+                GridView.builder(
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        childAspectRatio: 3 / 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20),
+                    itemCount: 200,
+                    itemBuilder: (BuildContext context, index) {
+                      return Container(
+                          alignment: Alignment.center,
+                          child: Text("Hiii"),
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(15)));
+                    })
               ],
             ),
           ))
