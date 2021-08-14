@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/Profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: "Messenger",
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      routes: {},
+      routes: {'/profile': (context) => Profile()},
     );
   }
 }
@@ -164,8 +165,13 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.white)),
           backgroundColor: Colors.black,
-          leading: CircleAvatar(
-            child: FlutterLogo(),
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed('/profile');
+            },
+            child: CircleAvatar(
+              child: FlutterLogo(),
+            ),
           ),
           title: Text("Chats"),
           actions: [Icon(Icons.camera), Icon(Icons.create)],
