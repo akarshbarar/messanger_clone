@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/Chat.dart';
 import 'package:messenger/Profile.dart';
 
 void main() {
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
       title: "Messenger",
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      routes: {'/profile': (context) => Profile()},
+      routes: {
+        '/profile': (context) => Profile(),
+        '/chat': (context) => Chat()
+      },
     );
   }
 }
@@ -95,6 +99,9 @@ class _HomePageState extends State<HomePage> {
                   itemCount: 100,
                   itemBuilder: (BuildContext context, int i) {
                     return ListTile(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/chat');
+                      },
                       leading: CircleAvatar(
                         child: FlutterLogo(),
                       ),
