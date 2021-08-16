@@ -64,12 +64,18 @@ class _HomePageState extends State<HomePage> {
           Expanded(
               child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100), color: Colors.grey),
+              borderRadius: BorderRadius.circular(100),
+            ),
             child: Row(
               children: [
                 Icon(
                   Icons.search,
                   color: Colors.white,
+                ),
+                Flexible(
+                  child: TextField(
+                    decoration: InputDecoration(hintText: "Search"),
+                  ),
                 ),
               ],
             ),
@@ -121,16 +127,19 @@ class _HomePageState extends State<HomePage> {
           length: 2,
           child: Scaffold(
             backgroundColor: Colors.black,
-            appBar: AppBar(
-              backgroundColor: Colors.black,
-              bottom: TabBar(tabs: [
-                Tab(
-                  text: "Active(34)",
-                ),
-                Tab(
-                  text: "Stories(11)",
-                )
-              ]),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50.0),
+              child: AppBar(
+                backgroundColor: Colors.black,
+                bottom: TabBar(tabs: [
+                  Tab(
+                    text: "Active(34)",
+                  ),
+                  Tab(
+                    text: "Stories(11)",
+                  )
+                ]),
+              ),
             ),
             body: TabBarView(
               children: [
@@ -168,6 +177,7 @@ class _HomePageState extends State<HomePage> {
     ];
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
         appBar: AppBar(
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.white)),
